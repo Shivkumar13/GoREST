@@ -25,6 +25,18 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 
-	//For this case, we will always pipe "Hello World" into the response writer
-	fmt.Fprintf(w, "Hello World!")
+	w.Header().Set("Content-Type", "text/html")
+
+	if r.URL.Path == "/" {
+
+		//For this case, we will always pipe "Hello from Shivkumar Ople" into the response writer
+		fmt.Fprint(w, "<h1>Hello From Shivkumar Ople!</h1>")
+
+	} else if r.URL.Path == "/contact" {
+
+		fmt.Fprintf(w, "Want to connect? please send an email to <a href=\"mailto:shivkumarople@gmail.com\">shiv@dracutt.com</a>.")
+	}
+
+	//	fmt.Fprint(w, r.URL.Path)
+
 }
