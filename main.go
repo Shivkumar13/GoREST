@@ -35,6 +35,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	} else if r.URL.Path == "/contact" {
 
 		fmt.Fprintf(w, "Want to connect? please send an email to <a href=\"mailto:shivkumarople@gmail.com\">shiv@dracutt.com</a>.")
+	} else {
+
+		w.WriteHeader(http.StatusNotFound)
+		fmt.Fprint(w, `<h1>We could not find the page you were looking for :(</h1><p>Please email us if you keep 
+	being sent to an invalid page.</p>`)
 	}
 
 	//	fmt.Fprint(w, r.URL.Path)
